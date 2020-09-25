@@ -11,7 +11,8 @@ alias \
 alias \
     c="clear" \
     r="reset" \
-    sdn="doas shutdown -h now"
+    sdn="doas shutdown -h now"\
+    gcpp="g++ -Wall -std=c++14"
 
 # rename
 alias \

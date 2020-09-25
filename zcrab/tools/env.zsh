@@ -27,3 +27,11 @@ export WINEPREFIX="$XDG_DATA_HOME"/wineprefixes/default
 
 export GOROOT="/usr/lib/go"
 export GOPATH="$HOME/.local/lib/golib:$HOME/doc/dev/go"
+export HOMEBREW_BOTTLE_DOMAIN=https://mirrors.ustc.edu.cn/homebrew-bottles
+
+export https_proxy=http://127.0.0.1:7890
+export http_proxy=http://127.0.0.1:7890
+# export all_proxy=socks5://127.0.0.1:7891
+
+export PATH="/usr/local/Cellar/llvm/10.0.1_1/bin:$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
+# export PATH="$HOME/.yarn/bin:$HOME/.config/yarn/global/node_modules/.bin:$PATH"
