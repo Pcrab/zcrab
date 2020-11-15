@@ -42,4 +42,6 @@ alias \
     mv="mv -iv"
 # go
 alias \
-    cg="cd ~/doc/dev/go/src/go_code/" \
+    cg="cd ~/.local/go/src/git/pcrab/" \
+    cv="cd $HOME/.vim/"\
+    cn="cd $XDG_CONFIG_HOME/nvim/"\
