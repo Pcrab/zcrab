@@ -40,6 +40,7 @@ for plugin in `ls $ZCRAB/plugins/`; do
 done
 
 for custom in `ls $ZCRAB/custom/`; do
-    source $ZCRAB/custom/$custom/$custom.zsh
+    source $ZCRAB/custom/$custom
 done
 unset plugin tool custom
+
