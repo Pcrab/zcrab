@@ -19,7 +19,12 @@ ZTHEME="asdf"
 ZTHEME_RANDOM=()
 
 # Set what plugins to enable. They must be in plugins dir.
-ZPLUGINS="zsh-syntax-highlighting"
+ZPLUGINS=(
+    zsh-syntax-highlighting
+    zsh-history-substring-search
+    zsh-completions
+    zsh-rust
+)
 
 # Set n to disable auto update
 AUTO_UPDATE="true"
@@ -37,6 +42,5 @@ source $ZCRAB/zcrabrc.zsh
 
 # Add your custom configurations here.
 # All your customizations here will overwrite those provided by default, like aliases.
-
 
 [ -f ~/.fzf.zsh ] && source ~/.fzf.zsh
