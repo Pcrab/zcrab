@@ -73,7 +73,6 @@ if [[ ! -d $HOME/.config/zsh ]] {
 
 cat <<EOF >$HOME/.zshenv
 ZDOTDIR=$HOME/.config/zsh
-source "$HOME/.cargo/env"
 EOF
 
 echo $SHELL | grep zsh >> /dev/null
@@ -97,12 +96,6 @@ ZPLUGINS=()
 
 # Uncomment to enable VI mode
 VI_MODE="false"
-
-# Uncomment this line to disable update prompt
-# DISABLE_UPDATE_PROMPT="true"
-
-# Set update frequency (in days)
-UPDATE_FREQUENCY=7
 
 source \$ZCRAB/zcrabrc.zsh
 
