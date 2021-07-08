@@ -1,2 +1,7 @@
 /zcrab/custom/*
 /zcrab/plugins/*
+.zcompcache/*
+.zcompdump
+tags
+.zsh_history
+.zsh_sessions
