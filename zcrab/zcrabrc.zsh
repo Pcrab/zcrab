@@ -6,24 +6,26 @@ source $ZCRAB/tools/set-colors.zsh
 autoload -U colors && colors
 
 # Useful settings
-setopt autocd # Automatically cd into typed directory.
+setopt autocd   # Automatically cd into typed directory.
 stty stop undef # Disable ctrl-s to freeze terminal.
 
 # Tab enhancement
+
+fpath=($ZCRAB/plugins/zsh-completions/src $ZCRAB/custom/completions $fpath)
 autoload -U compinit
 compinit -d $XDG_CACHE_HOME/zsh/zcompdump-$ZSH_VERSION
 zstyle ':completion:*' menu select
 zmodload zsh/complist
-_comp_options+=(globdots)   # Include hidden files
+_comp_options+=(globdots) # Include hidden files
 setopt COMPLETE_ALIASES
 zstyle ':completion::complete:*' gain-privileges 1
 
-for tool in `ls $ZCRAB/tools/`; do
+for tool in $(ls $ZCRAB/tools/); do
     source $ZCRAB/tools/$tool
 done
 
 open-vi-mode
-zcrab theme set $ZTHEME > /dev/null 2>&1
+zcrab theme set $ZTHEME >/dev/null 2>&1
 
 # History
 HISTSIZE=10000
@@ -34,12 +36,11 @@ export TERMINAL="alacritty"
 export BROWSER="firefox"
 export PATH="$PATH:$HOME/.local/bin:$HOME/.config/yarn/global/node_modules/hexo-cli/bin:$GOROOT/bin:$GOPATH/bin"
 
-
-for plugin in `ls $ZCRAB/plugins/`; do
-    source $ZCRAB/plugins/$plugin/$plugin.zsh
+for plugin in $ZPLUGINS; do
+    source $ZCRAB/plugins/$plugin/$plugin.plugin.zsh
 done
 
-for custom in `ls $ZCRAB/custom/`; do
+for custom in $(ls $ZCRAB/custom/); do
     source $ZCRAB/custom/$custom
 done
 unset plugin tool custom
