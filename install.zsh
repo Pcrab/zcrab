@@ -6,7 +6,7 @@ function isCmdExist() {
         return 0
     fi
     echo "${BOLD}${RED}Warning: ${YELLOW}\"$1\"${RESET} does not exist on the machine. Please install it and try again."
-    return 2
+    finish 1
 }
 
 function setColor() {
@@ -18,18 +18,15 @@ function setColor() {
     RESET=$(printf '\033[m')
 }
 
-function unsetColor() {
-    unset RED GREEN YELLOW BLUE BOLD RESET
-}
-
 function cloneDir() {
-    rm -r $HOME/.config/zsh
     echo "${BOLD}>${RESET} git clone https://github.com/Pcrab/zcrab $HOME/.config/zsh"
     git clone https://github.com/Pcrab/zcrab $HOME/.config/zsh
 }
 
 function finish() {
-    unsetColor
+    unset RED GREEN YELLOW BLUE BOLD RESET
+    unfunction isCmdExist setColor cloneDir
+    exit $1
 }
 
 setColor
@@ -48,11 +45,11 @@ if [[ ! -d $HOME/.config/zsh ]] {
         if [[ "y" == will || "Y" == will ]] {
             echo "Do you ${BOLD}sure ${RED} overwrite the directory${RESET} is what you want? y/N"
             if [[ "y" == will || "Y" == will ]] {
+                rm -r $HOME/.config/zsh
                 cloneDir
             }
         } else {
-            finish
-            exit 1
+            finish 1
         }
     } else {
         echo "${BOLD}>${RESET} cp -rv $HOME/.config/zsh $HOME/.config/zshbak"
@@ -61,6 +58,7 @@ if [[ ! -d $HOME/.config/zsh ]] {
             echo "Something wrong has happened during backup. Do you want to try again? Y/n"
             read will
             if [[ "n" == will || "N" == will ]] {
+                rm -r $HOME/.config/zsh
                 break
             }
             echo "${BOLD}>${RESET} cp -rv $HOME/.config/zsh $HOME/.config/zshbak"
@@ -113,5 +111,5 @@ source $ZDOTDIR/.zshrc
 
 
 echo "${BOLD}Install finished successfully. Please enjoy!${RESET}"
-finish
+finish 0
 
