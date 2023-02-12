@@ -22,6 +22,12 @@ setopt AUTO_PUSHD AUTO_CD AUTO_LIST AUTO_LIST PUSHD_IGNORE_DUPS INTERACTIVE_COMM
 bindkey -e
 bindkey '^R' history-incremental-search-backward      # [C-r]: Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
 bindkey '^S' history-incremental-search-forward       # [C-s]: Search backward incrementally for a specified string. The string may begin with ^ to anchor the search to the beginning of the line.
+bindkey -M vicmd 'k' history-substring-search-up
+bindkey -M vicmd 'j' history-substring-search-down
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
+bindkey -M emacs '^P' history-substring-search-up
+bindkey -M emacs '^N' history-substring-search-down
 
 bindkey ' ' magic-space                               # [<SPC>]: do history expansion
 bindkey '^[[1;5C' forward-word                        # [<C-RightArrow>]: move forward one word
@@ -40,6 +46,7 @@ fi
 
 autoload -U edit-command-line
 zle -N edit-command-line
+zle -N backword-word
 bindkey '\C-x\C-e' edit-command-line                  # [<C-x><C-e>]: Open $EDITOR to edit command
 bindkey "^[m" copy-prev-shell-word
 bindkey '^H' backward-kill-word
